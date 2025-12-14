@@ -1,10 +1,11 @@
 import { cardCategories } from "../data/categories";
 import CategoryCard from "../components/CategoryCard";
+import { Typography } from "@mui/material";
 
 function Home() {
   return (
     <div className="container">
-      <h1>کارت پستال‌های مناسبتی</h1>
+      <Typography>کارت پستال‌های مناسبتی</Typography>
 
       <div className="grid">
         {cardCategories.map(cat => (

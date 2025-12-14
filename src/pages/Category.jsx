@@ -1,6 +1,7 @@
 import { useParams, Link } from "react-router-dom";
 import { cards } from "../data/cards";
 import {
+  Box,
   Card,
   CardActionArea,
   CardContent,
@@ -15,6 +16,7 @@ function Category() {
 
   return (
     <PageWrapper>
+      <Box sx={{ display: "flex", flexDirection: "column", p: 2 }}>
       <Typography
         variant="h1"
         sx={{
@@ -58,6 +60,7 @@ function Category() {
           </Card>
         </Link>
       ))}
+      </Box>
     </PageWrapper>
   );
 }

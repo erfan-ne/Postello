@@ -20,7 +20,11 @@ function CardBuilder() {
   const card = cards.find(c => c.id === cardId);
 
   if (!card) {
-    return <Typography>کارت مورد نظر یافت نشد</Typography>;
+    return (
+      <Typography align="center" sx={{ mt: 4 }}>
+        کارت مورد نظر یافت نشد
+      </Typography>
+    );
   }
 
   const [form, setForm] = useState({
@@ -39,52 +43,52 @@ function CardBuilder() {
 
   const handleCreate = () => {
     const uniqueId = Date.now().toString();
-
     localStorage.setItem(
       `card-${uniqueId}`,
       JSON.stringify({ ...form, cardId })
     );
-
     navigate(`/card/${uniqueId}`);
   };
 
   return (
-    <Box sx={{ px: 2, py: 4 }}>
-      <Grid container spacing={4} alignItems="center">
+    <Box sx={{ p: 4, width:"100vw", height:"100vh", display:"flex", flexDirection:"column" }}>
         {/* Preview */}
-        <Grid item xs={12} md={6}>
+        <Box sx={{height:"50%"}}>
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.4 }}
-          >
+            >
             <Paper
               elevation={6}
               sx={{
                 position: "relative",
                 borderRadius: 4,
                 overflow: "hidden",
-                aspectRatio: "3 / 4"
+                aspectRatio: "3 / 4",
+                width:"100%",
+                height: "100%"
               }}
-            >
+              >
               <img
                 src={card.background}
                 alt={card.title}
                 style={{
-                  width: "100%",
-                  height: "100%",
-                  objectFit: "cover"
-                }}
-              />
+                  width:"100%"
 
-              <Lottie
-                animationData={animations[card.lottie]}
+                }}
+                />
+
+              {card.animation?.type === "lottie" && (
+                <Lottie
+                animationData={animations[card.animation.key]}
                 loop
                 style={{
                   position: "absolute",
                   inset: 0
                 }}
-              />
+                />
+              )}
 
               <Box
                 sx={{
@@ -95,18 +99,20 @@ function CardBuilder() {
                   color: "#fff",
                   textShadow: "0 2px 6px rgba(0,0,0,0.5)"
                 }}
-              >
-                <Typography variant="h6">{form.receiver}</Typography>
+                >
+                <Typography variant="h6">
+                  {form.receiver || "نام گیرنده"}
+                </Typography>
                 <Typography variant="subtitle1">
-                  {form.sender}
+                  {form.sender || "نام فرستنده"}
                 </Typography>
               </Box>
             </Paper>
           </motion.div>
-        </Grid>
+        </Box>
 
         {/* Form */}
-        <Grid item xs={12} md={6}>
+        <Box>
           <Paper elevation={4} sx={{ p: 4, borderRadius: 4 }}>
             <Typography variant="h5" mb={3}>
               شخصی‌سازی کارت
@@ -142,8 +148,7 @@ function CardBuilder() {
               ساخت کارت
             </Button>
           </Paper>
-        </Grid>
-      </Grid>
+        </Box>
     </Box>
   );
 }

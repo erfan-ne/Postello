@@ -3,19 +3,22 @@ export const cards = [
     id: "yalda-01",
     category: "yalda",
     title: "کارت یلدایی برفی",
-    background: "../../public/pictures/yalda-bg.jpg",
-    lottie: "snow",
+    background: "/public/pictures/yalda-bg.jpg",
+    animation: {
+      type: "lottie",
+      key: "snow",
+    },
     textAreas: [
       {
         id: "receiver",
         label: "نام گیرنده",
-        maxLength: 20
+        maxLength: 20,
       },
       {
         id: "sender",
         label: "نام فرستنده",
-        maxLength: 20
-      }
-    ]
-  }
+        maxLength: 20,
+      },
+    ],
+  },
 ];

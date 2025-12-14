@@ -3,7 +3,7 @@ export const cards = [
     id: "yalda-01",
     category: "yalda",
     title: "کارت یلدایی برفی",
-    background: "/images/yalda-bg.jpg",
+    background: "../../public/pictures/yalda-bg.jpg",
     lottie: "snow",
     textAreas: [
       {

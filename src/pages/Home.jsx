@@ -8,8 +8,11 @@ function Home() {
 
       <div className="grid">
         {cardCategories.map(cat => (
+          <>
           <CategoryCard key={cat.id} category={cat} />
+          </>
         ))}
+
       </div>
     </div>
   );

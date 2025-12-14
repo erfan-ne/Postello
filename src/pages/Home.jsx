@@ -1,30 +1,34 @@
 import { cardCategories } from "../data/categories";
 import CategoryCard from "../components/CategoryCard";
-import { Box, Typography } from "@mui/material";
+import { Box, Grid, Typography } from "@mui/material";
+import PageWrapper from "../components/PageWrapper";
 
 function Home() {
   return (
-    <Box sx={{ display: "flex", flexDirection: "column" }}>
-      <Typography
-        variant="h1"
-        sx={{ fontSize: "2rem", textAlign: "center", fontWeight: "bold" }}
-      >
-        کارت پستال‌های مناسبتی
-      </Typography>
+    <PageWrapper>
+      <Box sx={{ display: "flex", flexDirection: "column", p: 2 }}>
+        <Typography
+          variant="h1"
+          sx={{
+            fontSize: "2rem",
+            textAlign: "center",
+            fontWeight: "bold",
+            mt: 2,
+            mb: 4,
+          }}
+        >
+          کارت پستال‌های مناسبتی
+        </Typography>
 
-      <Box
-        sx={{
-          display: "flex",
-          gap: 1,
-          justifyContent:"space-around",
-          mt:3,
-        }}
-      >
-        {cardCategories.map((cat) => (
-          <CategoryCard key={cat.id} category={cat} />
-        ))}
+        <Grid container spacing={3} justifyContent="center">
+          {cardCategories.map((cat) => (
+            <Grid item xs={12} sm={6} md={4} key={cat.id}>
+              <CategoryCard category={cat} />
+            </Grid>
+          ))}
+        </Grid>
       </Box>
-    </Box>
+    </PageWrapper>
   );
 }
 

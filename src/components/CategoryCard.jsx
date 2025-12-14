@@ -1,13 +1,33 @@
+import {
+  Box,
+  Card,
+  CardContent,
+  CardMedia,
+  Typography,
+  CardActionArea,
+} from "@mui/material";
 import { Link } from "react-router-dom";
 
 function CategoryCard({ category }) {
   return (
-    <Link to={`/category/${category.id}`}>
-      <div className="category-card">
-        <img src={category.cover} alt={category.title} />
-        <h3>{category.title}</h3>
-      </div>
-    </Link>
+    <>
+      <Card sx={{ width: "30%", maxWidth:"400px" }}>
+        <CardActionArea component={Link} to={`/category/${category.id}`}>
+          <CardMedia
+            component="img"
+            height="200"
+            width="200"
+            image={category.cover}
+            alt="green iguana"
+          />
+          <CardContent>
+            <Typography variant="h6" component="div">
+              {category.title}
+            </Typography>
+          </CardContent>
+        </CardActionArea>
+      </Card>
+    </>
   );
 }
 

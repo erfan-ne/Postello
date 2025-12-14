@@ -22,7 +22,7 @@ function Home() {
 
         <Grid container spacing={3} justifyContent="center">
           {cardCategories.map((cat) => (
-            <Grid item xs={12} sm={6} md={4} key={cat.id}>
+            <Grid key={cat.id}>
               <CategoryCard category={cat} />
             </Grid>
           ))}

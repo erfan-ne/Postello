@@ -6,10 +6,11 @@ import {
   CardActionArea,
 } from "@mui/material";
 import { Link } from "react-router-dom";
+import PageWrapper from "../components/PageWrapper"
 
 function CategoryCard({ category }) {
   return (
-    <>
+    <PageWrapper>
       <Card
         sx={{
           width: "300px",
@@ -27,7 +28,7 @@ function CategoryCard({ category }) {
             height="200"
             width="200"
             image={category.cover}
-            alt="green iguana"
+            alt="yalda"
           />
           <CardContent>
             <Typography variant="h6" textAlign={"center"}>
@@ -36,7 +37,7 @@ function CategoryCard({ category }) {
           </CardContent>
         </CardActionArea>
       </Card>
-    </>
+    </PageWrapper>
   );
 }
 
